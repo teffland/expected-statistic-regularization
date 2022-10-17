@@ -6,30 +6,35 @@ Implementation and experiments for "[Improving Low-Resource Cross-lingual Parsin
 Experiments were all run on a g4dn.xlarge instance on AWS with the amazon deep learning AMI on ubuntu 18 using python 3.6.15.
 (You'll need at least 16GB of GPU ram to run these experiments as is.)
 
-The python requirements are in `requirements.txt`
+The python requirements are in `requirements.txt`. I recommend using pyenv.
 
 ## Library TOC
 
-The code is based off of the [udify]() codebase and allennlp library.
+The code is adapted from the [udify](https://github.com/Hyperparticle/udify) codebase and allennlp. The significant
+updates to the code though had to be made to work with a newer version of allennlp.
 
 The directory structure is as follows:
 - `config`: holds allennlp experiment configurations. the configs define the model basics and use environment variables
  for hyperparams.
 - `data`: holds datasets and model assets. Our experiments are with the UD v2.8 treebanks, which are available
 [here](http://hdl.handle.net/11234/1-3687). The treebanks from that link must be placed in this folder, as in
-`expected-statistic-regularization/data/ud-treebanks-v2.8/`. The base udify model weights (trained on the 13 datasets
-from the paper) can be downloaded from this
-[gdrive]() link, and should be placed in the `weights` folder as `udify-13-model_weights.th`.
+`expected-statistic-regularization/data/ud-treebanks-v2.8/`. The base udify model vocab and weights data
+ (trained on the 13 datasets from the paper) can be downloaded from this
+[gdrive]() link, and should be placed in this folder.  I also have the full subsampled ud-v2.8 treebanks
+ with precomputed statistics used in the experiments available upon request.
 - `ml`: holds source code for experiments. 
     - `ml.cmd` contains routines for creating datasets used in experiments
     - `ml.models` contains the main model classes used in the paper `expected_syntax_udify_model`, and the `ppt` baseline.
-    - `ml.ppt` contains the source code from [Kurniwan's PPT method]() that we reuse for the baseline
+    - `ml.ppt` contains the source code from [Kurniawan's PPT method](https://github.com/kmkurn/ppt-eacl2021) that we reuse for the baseline
     - `ml.training` contains code for training the model
-    - `ml.udify` contains the source udify code from [Kondryak's UDify method](), which we extend.
+    - `ml.udify` contains the source udify code from [Kondratyuk's UDify method](https://github.com/Hyperparticle/udify), which we extend.
     - `ml.utils` contains utilities for working with ud data and analyzing its statistics. the statistic functions are
       also implemented in here, both in regular python as `stat_funcs` and in pytorch as `tensor_stat_funcs`. The
       `test_tensor_stat_funcs` module ensures that these two implementations agree with eachother for correctness. 
 - `scripts`: holds base scripts for generating datasets, computing stats, and launching experiments.
+
+Main code files of note would be `expected_syntax_udify_model.py` and `tensor_stat_funcs.py`, which implement the model
+and the supervision statistics.
 
 ## Usage
 
@@ -95,7 +100,7 @@ bash scripts/run_ud-13_all_ud_semisup.sh
 
 ## Citing
 
-If you make use of this code or information from the paper please cite:
+If you make use of this code or information from the paper please cite: TBD
 <!-- ```
 @misc{effland2022improving,
       title={Improving Low-Resource Cross-Lingual Parsing with Expected Statistic Regularization}, 
