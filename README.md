@@ -101,13 +101,10 @@ bash scripts/run_ud-13_all_ud_semisup.sh
 ## Citing
 
 If you make use of this code or information from the paper please cite: TBD
-<!-- ```
-@misc{effland2022improving,
-      title={Improving Low-Resource Cross-Lingual Parsing with Expected Statistic Regularization}, 
-      author={Thomas Effland and Michael Collins},
-      year={2022},
-      eprint={},
-      archivePrefix={arXiv},
-      primaryClass={cs.CL}
+@article{Effland2022ImprovingLC,
+  title={Improving Low-Resource Cross-lingual Parsing with Expected Statistic Regularization},
+  author={Thomas Effland and Michael Collins},
+  journal={ArXiv},
+  year={2022},
+  volume={abs/2210.09428}
 }
-``` -->
