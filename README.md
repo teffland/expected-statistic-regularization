@@ -1,5 +1,5 @@
 # expected-statistic-regularization
-Implementation and experiments for "[Improving Low-Resource Cross-lingual Parsing with Expected Statistic Regularization]()" to appear in TACL 2023
+Implementation and experiments for "[Improving Low-Resource Cross-lingual Parsing with Expected Statistic Regularization](https://arxiv.org/abs/2210.09428)" to appear in TACL 2023
 
 ## Installation
 
